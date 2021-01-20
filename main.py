@@ -91,4 +91,7 @@ if __name__ == '__main__':
             maxIndex = index
 
     finalMax = WDPCombinationsMax[maxIndex]
-    print(f"Winner: bidder {finalMax['details'][0]['bidder']} with combination {finalMax['details'][0]['combination']} and profit {finalMax['sum']}.")
+    print('\nResults:')
+    for value in finalMax['details']:
+        print(f"Bidder {value['bidder']} with combination: {value['combination']}")
+    print(f"Profit: {finalMax['sum']}")
