@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def getCombinations(items):
     result = [[]]
     for item in items:
@@ -24,28 +27,15 @@ def validate(inputType, inputMessage, errorMessage):
 
 
 if __name__ == '__main__':
-    N = validate('int', 'N: ', 'Please give an integer!')
+    N = validate('int', 'Number of items: ', 'Please give an integer!')
     combinations = getCombinations(range(1, N + 1))
-    continueInput = True
-    bidderCount = 1
-    bidders = {}
-    while continueInput:
-        print(f'Bidder {bidderCount}: ')
-        bidders[f'bidder_{bidderCount}'] = {}
-        for item in combinations:
-            bidd = validate('float', f'{item}: ', 'Only numbers!')
-            bidders[f'bidder_{bidderCount}'][f'{str(item)}'] = bidd
+    bidders = validate('int', 'Number of bidders: ', 'Please give an integer!')
+    bids = np.zeros((len(combinations), bidders))
 
-        while True:
-            answer = input('Continue? y/n\n')
-            if answer == 'y' or answer == 'n':
-                break
-            else:
-                print("'y' for yes or 'n' for no.")
+    for bIndex, column in enumerate(bids.T):
+        print(f'Bidder {bIndex + 1}')
+        for i in range(len(column)):
+            bid = validate('float', f'Combination {combinations[i]}: ', 'Only numbers!')
+            column[i] = bid
 
-        if answer == 'n':
-            continueInput = False
-        else:
-            bidderCount += 1
-
-print(bidders)
+    print(bids)
