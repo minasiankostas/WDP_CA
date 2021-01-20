@@ -1,5 +1,4 @@
 import numpy as np
-import operator
 from functions import *
 
 if __name__ == '__main__':
