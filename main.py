@@ -1,7 +1,9 @@
 import numpy as np
 from functions import *
+from time import process_time
 
 if __name__ == '__main__':
+    t = process_time()
     N = validate('int', 'Number of items: ', 'Please give an integer!')
     combinations = getCombinations(range(1, N + 1))
     bidders = validate('int', 'Number of bidders: ', 'Please give an integer!')
@@ -94,4 +96,5 @@ if __name__ == '__main__':
     print('\nResults:')
     for value in finalMax['details']:
         print(f"Bidder {value['bidder']} with combination: {value['combination']}")
-    print(f"Profit: {finalMax['sum']}")
+    print(f"Revenue: {finalMax['sum']}")
+    print(f'Execution time: {process_time() - t}')
