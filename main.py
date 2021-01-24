@@ -1,6 +1,7 @@
 import numpy as np
 from functions import *
 from time import process_time
+import random
 
 if __name__ == '__main__':
     t = process_time()
@@ -9,10 +10,8 @@ if __name__ == '__main__':
     bidders = validate('int', 'Number of bidders: ', 'Please give an integer!')
     bids = np.zeros((len(combinations), bidders))
     for bIndex, column in enumerate(bids.T):
-        print(f'Bidder {bIndex + 1}')
         for i in range(len(column)):
-            bid = validate('float', f'Combination {combinations[i]}: ', 'Only numbers!')
-            column[i] = bid
+            column[i] = random.randint(0, 100)
 
     WDPCombinationsMax = []
     subset = list(range(1, N + 1))
